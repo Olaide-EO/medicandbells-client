@@ -68,6 +68,7 @@
     text-align: center;
   }
   .greeting-main {
-    display: block;
+    
+    flex-direction: column-reverse;
   }
 }
