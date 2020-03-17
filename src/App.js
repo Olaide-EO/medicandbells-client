@@ -6,9 +6,6 @@ import ScrollToTop from 'react-router-scroll-top'
 
 import 'normalize.css/normalize.css';
 import './App.css';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
 import AuthRoute from './util/AuthRoute';
 // Redux
@@ -25,15 +22,15 @@ import Navbar from './components/navbar/Navbar';
 //Pages
 import home from './pages/home/Home';
 import signup from './pages/signup/Signup';
-import login from './pages/login/Login';
-
+import Logintest from './pages/login/Logintest';
+import Contactus from './pages/contactus/Contactus';
 
 
 
 
 import axios from 'axios';
 
-const theme = createMuiTheme(themeFile);
+
 
 axios.defaults.baseURL = "https://us-central1-scentsbyduntan.cloudfunctions.net/api";
 
@@ -60,7 +57,7 @@ if(token){
 class App extends Component {
       render(){
         return (
-          <MuiThemeProvider theme={theme}>
+         
           <Provider store={store}>
        
           <Router>
@@ -68,20 +65,20 @@ class App extends Component {
           <LastLocationProvider>
            <Navbar/>
            
-           <div className="container">
+          
              <Switch>
                <Route exact path="/" component={home} />
-               <Route exact path="/login" component={login} />
+               <Route exact path="/login" component={Logintest} />
                
                <Route exact path="/signup" component={signup} />
-              
+               <Route exact path="/contactus" component={Contactus} />
                
              </Switch>
-           </div>
+           
             </LastLocationProvider>
           </Router>
           </Provider>
-          </MuiThemeProvider>
+         
         );
       }
 }
