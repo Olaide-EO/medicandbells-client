@@ -1,0 +1,51 @@
+
+.main {
+  width: 90%;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 4rem;
+}
+
+
+
+.signupHere{
+ color: #00bcd4;
+}
+.loginHere{
+  color: #00bcd4;
+}
+.mobileLink{
+  color: #000;
+}
+#loadingHome{
+  position: fixed;
+  margin-top: 50%;
+  margin-left: 50%;
+}
+.drawerLink{
+  color: #000;
+}
+#loginGrid{
+  margin:auto;
+}
+#loginGridItem{
+  margin:auto;
+}
+#signupGridItem{
+  margin: auto;
+}
+#logFlex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#loginLink{
+  color: #A9A9A9;
+  margin: auto;
+}
+.loginSpan{
+  color: #00bcd4;
+}
+
+

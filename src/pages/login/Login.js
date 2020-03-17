@@ -21,7 +21,7 @@ import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import './Login.css';
 
 // Redux stuff
 import { connect } from 'react-redux';
