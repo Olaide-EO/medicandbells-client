@@ -1,0 +1,153 @@
+.footRow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partners-logo img {
+  max-width: 186px;
+  width: 100%;
+}
+
+.widget .widget-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 35px;
+}
+
+.widget p {
+  color: #999;
+}
+
+.widget-navigation li a {
+  color: #999;
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+
+.widget-navigation li a:hover {
+  color: #ff7214;
+}
+
+@media screen and (max-width: 767px) {
+  .widget-navigation {
+    margin-bottom: 30px;
+  }
+}
+
+.widget-insta-feed ul {
+  -webkit-box-align: inherit;
+      -ms-flex-align: inherit;
+          align-items: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.widget-insta-feed ul li {
+  -ms-flex-preferred-size: calc(100% / 3 - 10px);
+      flex-basis: calc(100% / 3 - 10px);
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.widget-insta-feed ul li:nth-child(3n - 3) {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .widget-insta-feed {
+    margin-bottom: 30px;
+  }
+}
+
+.widget-address address {
+  position: relative;
+}
+
+.widget-address span, .widget-address a {
+  color: #999;
+  display: block;
+  line-height: 23px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.widget-address span i, .widget-address a i {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 4px;
+}
+
+.widget-address a {
+  margin-top: 10px;
+}
+
+/*************************
+ * Footer
+ */
+.footer {
+  position: relative;
+}
+
+.footer .logo {
+  margin-bottom: 45px;
+}
+
+.footer .widget-title {
+  color: #fff;
+}
+
+.footer .foo-top {
+  background-color: #162b45;
+  padding: 100px 0;
+}
+
+.footer .foo-btm {
+  background-color: #10233a;
+}
+
+.footer .foo-btm .copyright {
+  color: #888;
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 0;
+  padding: 20px 0;
+}
+
+.footer .foo-btm .copyright a {
+  color: #ff7214;
+}
+
+
+
+a {
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+  outline: 0px;
+}
+
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
