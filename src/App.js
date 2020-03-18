@@ -6,6 +6,11 @@ import ScrollToTop from 'react-router-scroll-top'
 
 import 'normalize.css/normalize.css';
 import './App.css';
+
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import themeFile from './util/theme';
+
 import './pages/login/fonts/material-icon/css/material-design-iconic-font.css';
 import './pages/login/fonts/material-icon/css/material-design-iconic-font.min.css';
 
@@ -17,9 +22,9 @@ import store from './redux/store';
 import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser, getUserData } from './redux/actions/userActions';
 
-
 // components
 import Navbar from './components/navbar/Navbar';
+
 
 
 //Pages
@@ -27,13 +32,16 @@ import home from './pages/home/Home';
 import SignupIndex from './pages/signup/SignupIndex';
 import LoginIndex from './pages/login/LoginIndex';
 import Contactus from './pages/contactus/Contactus';
-
-
-
+import Faq from './pages/faq/Faq';
+import Profile from './pages/profile/Profile';
+import Medications from './pages/medications/Medications'
+import ViewMed from './pages/viewMed/ViewMed';
+import AddMed from './pages/addMed/AddMed';
 
 import axios from 'axios';
 
 
+const theme = createMuiTheme(themeFile);
 
 axios.defaults.baseURL = "https://us-central1-medsandbells.cloudfunctions.net/api";
 
@@ -60,7 +68,7 @@ if(token){
 class App extends Component {
       render(){
         return (
-         
+          <MuiThemeProvider theme={theme}>
           <Provider store={store}>
        
           <Router>
@@ -75,12 +83,24 @@ class App extends Component {
                
                <Route exact path="/signup" component={SignupIndex} />
                <Route exact path="/contactus" component={Contactus} />
+               <Route exact path="/faq" component={Faq} />
+
+                <Route exact path="/profile" component={Profile} />
+
+                 <Route exact path="/addMed" component={AddMed} />
+
+                  <Route exact path="/viewMed" component={ViewMed} />
+
+                   <Route exact path="/medications" component={Medications} />
+
                
              </Switch>
            
             </LastLocationProvider>
           </Router>
           </Provider>
+
+          </MuiThemeProvider>
          
         );
       }
