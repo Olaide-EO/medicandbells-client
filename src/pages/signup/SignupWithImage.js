@@ -15,7 +15,7 @@ export default function SignWithImage() {
          </div>
 
         <div className="greeting-image-div">
-          <img alt="E.O sitting on table" src={require("../../assests/images/undraw_donut_love_kau1.svg")}></img>
+          <img alt="E.O sitting on table" src={require("../../assests/images/undraw_review_fkgn.svg")}></img>
         </div>
 
 
