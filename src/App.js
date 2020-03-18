@@ -6,6 +6,9 @@ import ScrollToTop from 'react-router-scroll-top'
 
 import 'normalize.css/normalize.css';
 import './App.css';
+import './pages/login/fonts/material-icon/css/material-design-iconic-font.css';
+import './pages/login/fonts/material-icon/css/material-design-iconic-font.min.css';
+
 import jwtDecode from 'jwt-decode';
 import AuthRoute from './util/AuthRoute';
 // Redux

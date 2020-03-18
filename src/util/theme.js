@@ -11,8 +11,23 @@ export default {
       main: '#ff3d00',
       dark: '#b22a00',
       contrastText: '#fff'
-    }
+    },
+
+     typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+
+      'Montserrat',
+       '"Montserrat"', 
+       'sans-serif',
+     
+    ].join(','),
+
+     fontSize: 16;
+    lineHeight: normal;
+    backgroundColor: #fff,
   },
+
 
   spreadStyle: {
     typography: {

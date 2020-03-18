@@ -49,6 +49,7 @@ const styles = (theme) => ({
       },
 })
 
+
 function Copyright() {
   return (
     <Typography variant="body2" className="copyRightLogin" color="textSecondary" align="center">
@@ -62,6 +63,7 @@ function Copyright() {
   );
 }
 
+
 function Developer() {
   return (
 
@@ -70,6 +72,7 @@ function Developer() {
     </Typography>
   );
 }
+
 
 class Login extends Component {
    constructor(){
@@ -82,12 +85,14 @@ class Login extends Component {
        }
    }
 
+
 componentWillReceiveProps(nextProps){
 if(nextProps.UI.errors){
     this.setState({ errors: nextProps.UI.errors });
 
 }
 }   
+
 
 componentDidMount(){
    const {lastLocation} = this.props;
@@ -98,7 +103,6 @@ componentDidMount(){
     })
    }
     
-   
 }
 
 handleSubmit = (event) => {
@@ -218,6 +222,7 @@ handleChange = (event) => {
     }
 }
 
+
 Login.propTypes = {
     classes: PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired,
@@ -225,13 +230,18 @@ Login.propTypes = {
     UI: PropTypes.object.isRequired
 }
 
+
 const mapStateToProps = (state) => ({
     user: state.user,
     UI: state.UI
 });
 
+
+
 const mapActionsToProps = {
     loginUser
 }
+
+
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(withRouter(withLastLocation(Login))));
