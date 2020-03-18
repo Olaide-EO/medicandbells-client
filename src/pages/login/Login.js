@@ -31,7 +31,7 @@ import { loginUser } from '../../redux/actions/userActions';
 const styles = (theme) => ({
       ...theme.spreadStyle,
       paper: {
-        marginTop: theme.spacing(8),
+        
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -50,28 +50,7 @@ const styles = (theme) => ({
 })
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" className="copyRightLogin" color="textSecondary" align="center">
-      {'© '}
-      
-        scentsbyduntan
-      {' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
-
-function Developer() {
-  return (
-
-     <Typography variant="body2"  align="center">
-      <span style={{color: "red"}}>Developed by</span><span style={{color: "black"}}> E.O</span> 
-    </Typography>
-  );
-}
 
 
 class Login extends Component {
@@ -125,8 +104,8 @@ handleChange = (event) => {
         const { classes, UI: { loading } } = this.props
         const { errors } = this.state;
         return (
-          <div className="loginContainer">
-        <Container component="main" maxWidth="xs">
+          
+        <Container id="loginContainer" component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -211,12 +190,9 @@ handleChange = (event) => {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-        <a target="_blank" rel="noopener noreferrer" href="https://ebenladipo.com"><Developer /></a>
-      </Box>
+      
     </Container>
-  </div>
+  
 
         )
     }
