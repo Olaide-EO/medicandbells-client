@@ -14,20 +14,23 @@ code {
 }
 html,
 body {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
+  background-color: rgb(255,255,255) !important;
+  letter-spacing: normal !important; 
+  color: rgb(33,37,31) !important;
 }
 body {
-  margin: 0;
-  font: 19px / 23px Montserrat, "Montserrat", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0 !important;
+  font: 19px / 23px Montserrat, "Montserrat", sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 /* Media Query */
 @media (max-width: 1380px) {
   html,
   body {
-    font-size: 16px;
-    line-height: normal;
+    font-size: 16px !important;
+    line-height: normal !important;
   }
 }
 

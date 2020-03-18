@@ -24,8 +24,8 @@ import Navbar from './components/navbar/Navbar';
 
 //Pages
 import home from './pages/home/Home';
-import signup from './pages/signup/Signup';
-import Logintest from './pages/login/Logintest';
+import SignupIndex from './pages/signup/SignupIndex';
+import LoginIndex from './pages/login/LoginIndex';
 import Contactus from './pages/contactus/Contactus';
 
 
@@ -35,7 +35,7 @@ import axios from 'axios';
 
 
 
-axios.defaults.baseURL = "https://us-central1-scentsbyduntan.cloudfunctions.net/api";
+axios.defaults.baseURL = "https://us-central1-medsandbells.cloudfunctions.net/api";
 
 
 const token = localStorage.FBIdToken;
@@ -71,9 +71,9 @@ class App extends Component {
           
              <Switch>
                <Route exact path="/" component={home} />
-               <Route exact path="/login" component={Logintest} />
+               <Route exact path="/login" component={LoginIndex} />
                
-               <Route exact path="/signup" component={signup} />
+               <Route exact path="/signup" component={SignupIndex} />
                <Route exact path="/contactus" component={Contactus} />
                
              </Switch>
