@@ -1,0 +1,33 @@
+.medic-main{
+  width: 90%;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 2rem;
+}
+
+.med-main{
+
+  width: 97%;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 2rem;
+
+}
+ 
+
+@media (max-width: 768px) {
+  
+  .medic-main{
+  width: 97%;
+  padding: 20px 5px;
+  margin: 0px auto;
+  margin-top: 2rem;
+}
+
+.med-main{
+	 width: 97%;
+  padding: 20px 5px;
+  margin: 0px auto;
+  margin-top: 2rem;
+}
+}
