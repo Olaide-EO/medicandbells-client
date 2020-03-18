@@ -17,6 +17,9 @@
   color: #868e96;
 }
 
+.and{
+  color: red;
+}
 .header li a {
   display: block;
   padding: 20px 20px;
@@ -38,7 +41,7 @@
   line-height: normal;
 }
 .header .logo-name {
-  font-family: 'Agustina Regular';
+  font-family: 'Pacifico', cursive;
   font-weight: bold;
   padding: 0 10px;
   color: #3f3fa1;
@@ -123,6 +126,7 @@
 @media (min-width: 48em) {
   .header li {
     float: left;
+
   }
   .header {
     display: flex;
@@ -139,5 +143,13 @@
 @media (max-width: 960px) and (min-width: 768px) {
   .header {
     font-size: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+  max-width: 97%;
+  padding: 20px 5px;
+  margin: 0px auto;
+}
   }
 }

@@ -11,15 +11,17 @@
   margin-top: 2rem;
 }
 
+.greeting-main {
+  display: flex;
+  align-items: center;
+}
 .gretting-main {
   width: 90%;
   padding: 20px 10px;
   margin: 0px auto;
 }
 
-.greeting-main {
-  display: flex;
-}
+
 
 .greeting-main > * {
   flex: 1;
@@ -67,6 +69,18 @@
     line-height: normal;
     text-align: center;
   }
+  .greet-main{
+  width: 97%;
+  padding: 20px 5px;
+  margin: 0px auto;
+  margin-top: 2rem;
+}
+
+.gretting-main {
+  width: 97%;
+  padding: 20px 5px;
+  margin: 0px auto;
+}
   .greeting-main {
     
     flex-direction: column-reverse;
