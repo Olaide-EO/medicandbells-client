@@ -184,7 +184,7 @@ handleChange = (event) => {
           <Grid container>
             <Grid id="signupGridItem" item>
               <Link id="loginLink" to="/signup" variant="body2">                              
-                Don't have an Account ? <span className="loginSpan">Create New Account</span>           
+                Don't have an Account ? <span className="loginSpan">Sign Up</span>           
               </Link>
             </Grid>
           </Grid>
