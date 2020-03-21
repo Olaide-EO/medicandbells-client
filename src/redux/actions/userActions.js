@@ -7,15 +7,16 @@ SET_USER_ORDERS, LOADING_ORDER, CLEAR_CART, LOADING_PAYMENT  } from '../types';
 
 
 export const loginUser = (userData, history, lastLocation) => (dispatch) => {
-    dispatch({ type: LOADING_UI });
+    dispatch({ type: LOADING_USER })
     axios
     .post('/login', userData)
     .then((res) => {
         setAuthorizationHeader(res.data.token)
         dispatch(getUserData());
-        dispatch({ type: CLEAR_ERRORS})
-        if(lastLocation){history.push(lastLocation)}
-        else{history.push('/');}
+        dispatch({ type: CLEAR_ERRORS});
+      //  if(lastLocation){history.push(lastLocation)}
+      //  else{history.push('/medications');}
+         history.push('/medications');
        })
     .catch(err => {
         dispatch({
@@ -27,7 +28,7 @@ export const loginUser = (userData, history, lastLocation) => (dispatch) => {
 
 
 export const signupUser = (newUserData, history) => (dispatch) => {
-    dispatch({ type: LOADING_UI });
+    dispatch({ type: LOADING_USER })
     
     axios
     .post('/signup', newUserData)
@@ -35,7 +36,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
         setAuthorizationHeader(res.data.token)
         dispatch(getUserData());
         dispatch({ type: CLEAR_ERRORS})
-        history.push('/');
+        history.push('/medicatons');
        })
     .catch(err => {
         dispatch({
@@ -52,7 +53,7 @@ export const logoutUser = () => (dispatch) => {
 }
 
 export const getUserData = () => (dispatch) => {
- dispatch({ type: LOADING_USER })
+ 
 axios.get('/user')
      .then(res => {
          dispatch({
