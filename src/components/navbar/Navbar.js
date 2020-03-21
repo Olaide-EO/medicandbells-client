@@ -43,9 +43,7 @@ export default function Navbar(props) {
           <li>
             <Link to='/profile'>Profile</Link>
           </li>
-          <li>
-            <Link to='/Faq'>Faq</Link>
-          </li>
+          
         </ul>
 
     )
