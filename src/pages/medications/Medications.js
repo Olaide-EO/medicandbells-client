@@ -80,31 +80,36 @@ class Medications extends Component {
 
 
         const history = authenticated ? (<MedHistory/>) : (<Noimage/>)
+
         const medicImage = false ? " medicImage": ""
 
 
-		const display =  (<div>
+		const display =  loading ? (
+			             <div>
 					      <Button variant="outlined" color="primary" onClick={this.handleToggle}>
 					        Show backdrop
 					      </Button>
 					      <Backdrop className={classes.backdrop} open={this.state.open} onClick={this.handleClose}>
 					        <CircularProgress color="inherit" />
 					      </Backdrop>
-					   </div>) : (
+					   </div>
+					   ) : (
+                           
                            <div className={"medic-main" + medicImage}>
-                   <div className="med-main">
-                         
-				       {history}
-                   </div>
+			                   <div className="med-main">
+			                         
+							       {history}
+			                   </div>
      
-                     <Link to="/addMed">                                                                               
-				        <Fab id="addButton" color="secondary" aria-label="add">
-				          <AddIcon />
-				        </Fab>
-				        </Link>
-                
+		                     <Link to="/addMed">                                                                               
+						        <Fab id="addButton" color="secondary" aria-label="add">
+						          <AddIcon />
+						        </Fab>
+						        </Link>
 
-         </div>
+                           </div>
+
+        
 					   )
 
         return (
