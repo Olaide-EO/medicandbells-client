@@ -85,13 +85,13 @@ class App extends Component {
                <Route exact path="/contactus" component={Contactus} />
                <Route exact path="/faq" component={Faq} />
 
-                <Route exact path="/profile" component={Profile} />
+               <AuthRoute exact path="/profile" component={Profile} />
 
-                 <Route exact path="/addMed" component={AddMed} />
+               <AuthRoute exact path="/addMed" component={AddMed} />
 
-                  <Route exact path="/viewMed" component={ViewMed} />
+               <AuthRoute exact path="/viewMed" component={ViewMed} />
 
-                   <Route exact path="/medications" component={Medications} />
+               <Route exact path="/medications" component={Medications} />
 
                
              </Switch>
