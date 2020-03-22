@@ -30,7 +30,7 @@ import { signupUser } from '../../redux/actions/userActions';
 
 
 const styles = (theme) => ({
-       
+       ...theme.spreadStyle,
        paper: {
         display: 'flex',
         flexDirection: 'column',
