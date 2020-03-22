@@ -81,18 +81,16 @@ class Medications extends Component {
 
         const history = authenticated ? (<MedHistory/>) : (<Noimage/>)
 
-        const medicImage = false ? " medicImage": ""
+        const medicImage = true ? " medicImage": ""
 
 
 		const display =  loading ? (
-			             <div>
-					      <Button variant="outlined" color="primary" onClick={this.handleToggle}>
-					        Show backdrop
-					      </Button>
-					      <Backdrop className={classes.backdrop} open={this.state.open} onClick={this.handleClose}>
+			             
+					     
+					      <Backdrop className={classes.backdrop} open={loading} onClick={this.handleClose}>
 					        <CircularProgress color="inherit" />
 					      </Backdrop>
-					   </div>
+					   
 					   ) : (
                            
                            <div className={"medic-main" + medicImage}>
@@ -109,11 +107,12 @@ class Medications extends Component {
 
                            </div>
 
-        
 					   )
 
         return (
-         {history}
+         <React.Fragment>
+         {display}
+         </React.Fragment>
         )
     }
 }
