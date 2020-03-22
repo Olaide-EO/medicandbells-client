@@ -1,0 +1,31 @@
+.addMedContainer{
+  width: 90%;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 2rem;
+}
+
+.addMed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#addCard{
+	
+	margin: 0 auto;
+}
+
+#productGrid{
+  margin: auto;
+}
+
+
+
+#cardActions{
+	max-width:345px;
+	display: flex;
+	justify-content: flex-end;
+
+	margin-top: 20px;
+}
