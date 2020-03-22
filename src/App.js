@@ -16,6 +16,8 @@ import './pages/login/fonts/material-icon/css/material-design-iconic-font.min.cs
 
 import jwtDecode from 'jwt-decode';
 import AuthRoute from './util/AuthRoute';
+import LoginRoute from './util/LoginRoute';
+
 // Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -79,9 +81,9 @@ class App extends Component {
           
              <Switch>
                <Route exact path="/" component={home} />
-               <Route exact path="/login" component={LoginIndex} />
+               <LoginRoute exact path="/login" component={LoginIndex} />
                
-               <Route exact path="/signup" component={SignupIndex} />
+               <LoginRoute exact path="/signup" component={SignupIndex} />
                <Route exact path="/contactus" component={Contactus} />
                <Route exact path="/faq" component={Faq} />
 
