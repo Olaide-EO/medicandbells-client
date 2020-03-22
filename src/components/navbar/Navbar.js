@@ -38,7 +38,7 @@ export default function Navbar(props) {
             <Link to='/medications'>Medications</Link>
           </li>
           <li>
-            <Link to='/add'>Add New</Link>                                                       
+            <Link to='/addMed'>Add New</Link>                                                       
           </li>
           <li>
             <Link to='/profile'>Profile</Link>
