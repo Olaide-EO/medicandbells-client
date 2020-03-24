@@ -20,7 +20,9 @@
   margin: auto;
 }
 
-
+#reminderTimes{
+	margin-top: 2rem;
+}
 
 #cardActions{
 	max-width:345px;
@@ -28,4 +30,10 @@
 	justify-content: flex-end;
 
 	margin-top: 20px;
+}
+
+#selectDossage{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
