@@ -57,9 +57,6 @@ export default function Dossage (props){
 
 		 <React.Fragment>
 		     
-		        
-		      
-
 					<IconButton
 			          
 			          onClick={handleExpandClick}

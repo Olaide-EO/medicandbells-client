@@ -17,6 +17,9 @@ import ConvertHour from './ConvertHour';
 
 import Dossage from './Dossage';
 
+import TimeRange from './TimeRange';
+import DecimalToHour from './DecimalToHour';
+import TimeSelect from './TimeSelect';
 
 const times = [       
                        'Once daily', 
@@ -74,7 +77,13 @@ export default function ReminderTimes() {
   
    const [selectedValue, setSelectedValue] = React.useState(times[0]);
 
-  const[hours, setHours] = React.useState(1)
+  const [hours, setHours] = React.useState(1);
+  
+  const [timeArray, setTimeArray] = React.useState(["08:00"]);
+
+   
+
+
   const handleExpandClick = () => {
   	if(reminder === true){
       setExpanded(!expanded);
@@ -102,6 +111,15 @@ export default function ReminderTimes() {
   const handleHoursSelected = (value) => {
       const timesSelected = ConvertHour(value);
       setHours(timesSelected)
+      changeTimesToArray(timesSelected);
+  }
+
+  const changeTimesToArray = (value) => {
+  	let step = (23-8)/value
+    let timeArray = TimeRange(8, 23, step)
+    let decToHour = timeArray.map(x => DecimalToHour(x));
+        setTimeArray(decToHour);
+
   }
 
   return (
@@ -162,8 +180,33 @@ export default function ReminderTimes() {
                   </React.Fragment>
 		         ) } 
 		        </CardContent>
-				<CardContent id="selectDossage">
-				   <div>Number of Hours Selected: {hours}</div>
+				<CardContent>
+				   
+				   {
+				   	timeArray.map(time => {
+                       
+                       var d = new Date();
+                       let stripMin = time.slice(0,2);
+                           d.setHours(stripMin);
+                           d.setMinutes(0);
+
+				   		return (
+				       
+								       <div className="showTime">
+				                       
+				                       <TimeSelect initialTime={d} />
+								   
+
+								       <div>Take One</div>
+				                        
+
+								       </div>
+
+				                         )}
+				                 )
+				   }
+
+				   	
 				</CardContent>
 		</React.Fragment>
       </Collapse>

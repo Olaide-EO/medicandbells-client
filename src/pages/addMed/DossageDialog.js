@@ -18,11 +18,7 @@ const hours = [
                        'Once daily', 
                        'Twice daily', 
                        '3 times a day',
-                       '4 times a day', 
-                       'Every 12 hours', 
-                       'Every 8 hours', 
-                       'Every 6 hours',
-                       'Every 4 hours',  
+                       '4 times a day',  
                        '5 times a day',
                        '6 times a day',
                        '7 times a day',
@@ -31,10 +27,8 @@ const hours = [
                        '10 times a day',
                        '11 times a day',
                        '12 times a day',                         
-                       'Every 3 hours',
-                       'Every 2 hours',
                        'Every hour'
- ];
+               ];
 
 
 const useStyles = makeStyles({
