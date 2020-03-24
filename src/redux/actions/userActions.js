@@ -8,6 +8,7 @@ SET_USER_ORDERS, LOADING_ORDER, CLEAR_CART, LOADING_PAYMENT  } from '../types';
 
 export const loginUser = (userData, history, lastLocation) => (dispatch) => {
     dispatch({ type: LOADING_USER })
+    dispatch({ type: LOADING_UI})
     axios
     .post('/login', userData)
     .then((res) => {
@@ -29,7 +30,7 @@ export const loginUser = (userData, history, lastLocation) => (dispatch) => {
 
 export const signupUser = (newUserData, history) => (dispatch) => {
     dispatch({ type: LOADING_USER })
-    
+    dispatch({ type: LOADING_UI })
     axios
     .post('/signup', newUserData)
     .then((res) => {
