@@ -193,8 +193,8 @@ export default function ReminderTimes() {
 				   		return (
 				       
 								       <div className="showTime">
-				                       
-				                       <TimeSelect initialTime={d} />
+				                       <div>{time}</div>
+				                      
 								   
 
 								       <div>Take One</div>
@@ -213,3 +213,6 @@ export default function ReminderTimes() {
     </Card>
   );
 }
+
+
+// <TimeSelect initialTime={d} />
