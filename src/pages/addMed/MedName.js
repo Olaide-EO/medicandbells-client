@@ -21,9 +21,7 @@ const useStyles = makeStyles(theme => ({
 	
   root: {
     maxWidth: 345,
-    '& > *': {
-      margin: theme.spacing(1),
-    },
+    
   },
   media: {
     height: 0,
@@ -45,11 +43,6 @@ export default function MedName(props) {
   	
     <Card id="addCard" className={classes.root}>
      <CardHeader
-        avatar={
-          <Avatar aria-label="Name" className={classes.avatar}>
-            M
-          </Avatar>
-        }
         
         title="Medication Name"
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
+import Slide from '@material-ui/core/Slide';
 
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -64,8 +65,9 @@ class AddMed extends React.Component {
   	
              
              {this.state.setReminderTime && (
-             	 <Grid id="productGrid" item xs={10} sm={8} md={6} lg={4} xl={3}  > <ReminderTimes/>  </Grid>
-  	
+             	<Slide direction="up" in={this.state.setReminderTime} mountOnEnter unmountOnExit>
+             	 <Grid id="productGrid" item xs={12} sm={8} md={6} lg={4} xl={3}  > <ReminderTimes/>  </Grid>
+  	             </Slide>
              	
              	)}
              
