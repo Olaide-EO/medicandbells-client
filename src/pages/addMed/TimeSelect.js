@@ -11,12 +11,14 @@ import {
 
 export default function TimeSelect(props) {
   // The first commit of Material-UI
-  const { initialTime } = props
+  const { time, setTimeInArray, index } = props
 
-  const [selectedDate, setSelectedDate] = React.useState(initialTime);
+  const [selectedDate, setSelectedDate] = React.useState(time);
 
   const handleDateChange = date => {
     setSelectedDate(date);
+    setTimeInArray(index, date);
+
   };
 
   return (
