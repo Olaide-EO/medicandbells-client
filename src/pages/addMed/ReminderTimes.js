@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TextField from '@material-ui/core/TextField';
 
 import ConvertHour from './ConvertHour';
 
@@ -20,6 +21,7 @@ import Dossage from './Dossage';
 import TimeRange from './TimeRange';
 import DecimalToHour from './DecimalToHour';
 import TimeSelect from './TimeSelect';
+
 
 const times = [       
                        'Once daily', 
@@ -185,22 +187,35 @@ export default function ReminderTimes() {
 				   {
 				   	timeArray.map(time => {
                        
+                       let myTime = time;
                        var d = new Date();
-                       let stripMin = time.slice(0,2);
+                       let stripMin = myTime.slice(0,2);
                            d.setHours(stripMin);
                            d.setMinutes(0);
+                         let count = 1
 
 				   		return (
 				       
-								       <div className="showTime">
-				                       <div>{time}</div>
+						    <div className="showTime">
 				                      
-								   
-
-								       <div>Take One</div>
-				                        
-
+				                      <div id="timePicker">
+				                      <TimeSelect initialTime={d} />
 								       </div>
+
+		                                       
+										         <div id="dossagePicker">
+												       <TextField  
+								                           name="phoneNumber"
+								                           type="text"
+								                           
+								                           value="take 1"
+								                          
+								                           />
+								                        
+				                                  </div>
+		                                        
+							 </div>
+
 
 				                         )}
 				                 )
@@ -215,4 +230,3 @@ export default function ReminderTimes() {
 }
 
 
-// <TimeSelect initialTime={d} />
