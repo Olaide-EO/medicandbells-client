@@ -29,9 +29,6 @@ class AddMed extends React.Component {
        super();
        this.state = {
            medicationName: '',
-           setReminder: false,
-           reminderTimes: [],
-           schedule: 'everyday',
            setReminderTime: false
 
        }
@@ -51,6 +48,8 @@ class AddMed extends React.Component {
   		})
   	}
   }
+
+  
 
   render(){
 
