@@ -10,10 +10,9 @@ export default function DecimalToHour(val){
 	}else{
 		n = `${dig}:00`
 	}
-
     
-   
-    return n;
+     
+     return n;
 
 }
 
