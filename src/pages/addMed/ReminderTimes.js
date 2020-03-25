@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 import ConvertHour from './ConvertHour';
 
@@ -79,7 +80,9 @@ export default function ReminderTimes() {
   
    const [selectedValue, setSelectedValue] = React.useState(times[0]);
 
-  const [hours, setHours] = React.useState(1);
+   const [dossageArray, setDossageArray] = React.useState([1]);
+
+  
   
   const [timeArray, setTimeArray] = React.useState(["08:00"]);
 
@@ -106,14 +109,20 @@ export default function ReminderTimes() {
   	
   }
 
+  const handleDossageArray = (number) => {
+        const arr = Array(number).fill(1)
+        return arr;
+  }
+
   const handleSetSelectedValue = (value) => {
   	setSelectedValue(value)
   }
 
   const handleHoursSelected = (value) => {
-      const timesSelected = ConvertHour(value);
-      setHours(timesSelected)
-      changeTimesToArray(timesSelected);
+      const numberOfTimes = ConvertHour(value);
+      changeTimesToArray(numberOfTimes);
+      handleDossageArray(numberOfTimes);
+
   }
 
   const changeTimesToArray = (value) => {
@@ -121,6 +130,18 @@ export default function ReminderTimes() {
     let timeArray = TimeRange(8, 23, step)
     let decToHour = timeArray.map(x => DecimalToHour(x));
         setTimeArray(decToHour);
+
+  }
+
+  const handleDossageNumber = (index, event) => {
+
+  	const newDossageArray = Array.from(dossageArray);
+  	newDossageArray[index] = event.target.value;
+  	      setDossageArray(newDossageArray);
+
+  }
+
+  const setTimeInArray = () => {
 
   }
 
@@ -185,7 +206,7 @@ export default function ReminderTimes() {
 				<CardContent>
 				   
 				   {
-				   	timeArray.map(time => {
+				   	timeArray.map((time, index) => {
                        
                        let myTime = time;
                        var d = new Date();
@@ -198,23 +219,27 @@ export default function ReminderTimes() {
 				       
 						    <div className="showTime">
 				                      
-				                      <div id="timePicker">
-				                      <TimeSelect initialTime={d} />
-								       </div>
+				                <div id="timePicker">
+				                      <TimeSelect setTimeInArray={setTimeInArray} index={index} initialTime={d} />
+								</div>
 
 		                                       
-										         <div id="dossagePicker">
-												       <TextField  
-								                           name="phoneNumber"
-								                           type="text"
-								                           
-								                           value="take 1"
+							    <div id="dossagePicker">
+										
+										 <TextField  
+								            name="dossageAmount"
+								            type="text"
+								            onChange={(e) => handleDossageNumber(index, e)}					                               
+										    InputProps={{
+										    startAdornment: <InputAdornment position="start">Take</InputAdornment>,
+												       }}
+								            value={dossageArray[index]}
 								                          
-								                           />
+								         />
 								                        
-				                                  </div>
+				                </div>
 		                                        
-							 </div>
+						 </div>
 
 
 				                         )}
