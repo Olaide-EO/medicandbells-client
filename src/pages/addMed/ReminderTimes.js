@@ -22,6 +22,7 @@ import Dossage from './Dossage';
 import TimeRange from './TimeRange';
 import DecimalToHour from './DecimalToHour';
 import TimeSelect from './TimeSelect';
+import StringToTime from './StringToTime';
 
 
 const times = [       
@@ -72,8 +73,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+const initDate = new Date()
+        initDate.setHours(8);
+        initDate.setMinutes(0);
+const singleDateArray = []
+        singleDateArray.push(initDate);
 
 export default function ReminderTimes() {
+
+
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
   const [reminder, setReminder] = React.useState(true);
@@ -84,7 +92,7 @@ export default function ReminderTimes() {
 
   
   
-  const [timeArray, setTimeArray] = React.useState(["08:00"]);
+  const [timeArray, setTimeArray] = React.useState(singleDateArray);
 
    
 
@@ -121,15 +129,18 @@ export default function ReminderTimes() {
   const handleHoursSelected = (value) => {
       const numberOfTimes = ConvertHour(value);
       changeTimesToArray(numberOfTimes);
-      handleDossageArray(numberOfTimes);
+     const arrayFromTimes = handleDossageArray(numberOfTimes);
+           setDossageArray(arrayFromTimes);
 
   }
 
   const changeTimesToArray = (value) => {
+  	
   	let step = (23-8)/value
     let timeArray = TimeRange(8, 23, step)
     let decToHour = timeArray.map(x => DecimalToHour(x));
-        setTimeArray(decToHour);
+    let stringToTimeArray = decToHour.map(x => StringToTime(x));
+        setTimeArray(stringToTimeArray);
 
   }
 
@@ -141,10 +152,15 @@ export default function ReminderTimes() {
 
   }
 
-  const setTimeInArray = () => {
+  const setTimeInArray = (index, date) => {
+    
+     const newTimeArray = Array.from(timeArray);
+     
+     newTimeArray[index] = date;
+     setTimeArray(newTimeArray);
+     
 
   }
-
   return (
     <Card id="reminderTimes" className={classes.root}>
       <CardHeader
@@ -184,7 +200,7 @@ export default function ReminderTimes() {
         />
          <CardContent>
          { (!expanded && reminder) &&  (
-         <Typography>8:00 AM</Typography>
+         timeArray.map(x => (<Typography style={{display: 'inline'}} >{x.toString().slice(16,21)}, </Typography>))
           )
         }
         {!reminder && (<Typography>Take as needed</Typography>)}
@@ -208,19 +224,14 @@ export default function ReminderTimes() {
 				   {
 				   	timeArray.map((time, index) => {
                        
-                       let myTime = time;
-                       var d = new Date();
-                       let stripMin = myTime.slice(0,2);
-                           d.setHours(stripMin);
-                           d.setMinutes(0);
-                         let count = 1
+                       
 
 				   		return (
 				       
 						    <div className="showTime">
 				                      
 				                <div id="timePicker">
-				                      <TimeSelect setTimeInArray={setTimeInArray} index={index} initialTime={d} />
+				                      <TimeSelect setTimeInArray={setTimeInArray} index={index}  time={time} />
 								</div>
 
 		                                       
@@ -228,7 +239,7 @@ export default function ReminderTimes() {
 										
 										 <TextField  
 								            name="dossageAmount"
-								            type="text"
+								            type="number"
 								            onChange={(e) => handleDossageNumber(index, e)}					                               
 										    InputProps={{
 										    startAdornment: <InputAdornment position="start">Take</InputAdornment>,
