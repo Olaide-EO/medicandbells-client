@@ -5,6 +5,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
+  TimePicker
+
 } from '@material-ui/pickers';
 
 export default function TimeSelect(props) {
@@ -18,18 +20,16 @@ export default function TimeSelect(props) {
   };
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}> 
-        <KeyboardTimePicker
-          margin="normal"
-          ampm={false}
-          id="time-picker"
-          label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change time',
-          }}
-        />
+    <MuiPickersUtilsProvider  utils={DateFnsUtils}> 
+     
+
+       <TimePicker
+
+        ampm={false}
+        
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
       
     </MuiPickersUtilsProvider>
   );
