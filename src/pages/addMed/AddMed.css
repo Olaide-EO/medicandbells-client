@@ -44,3 +44,23 @@
 	align-items: center;
 	margin-bottom: 1rem;
 }
+
+#timePicker{
+	max-width: 14%;
+}
+
+#dossagePickerContainer{
+	display: flex;
+	
+}
+
+#dossagePicker{
+	width: 20%;
+}
+@media (max-width: 768px) {
+
+.addMedContainer{
+ width: 95%;
+  margin-top: 2rem;
+}
+}
