@@ -79,9 +79,10 @@ const initDate = new Date()
 const singleDateArray = []
         singleDateArray.push(initDate);
 
-export default function ReminderTimes() {
+export default function ReminderTimes(props) {
 
-
+  const { getDossageArray, getTimeArray } = props;
+  
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(true);
   const [reminder, setReminder] = React.useState(true);
@@ -95,6 +96,11 @@ export default function ReminderTimes() {
   const [timeArray, setTimeArray] = React.useState(singleDateArray);
 
    
+   React.useEffect(() => {
+   	 
+      getDossageArray(dossageArray);
+      getTimeArray(timeArray);
+}, []);
 
 
   const handleExpandClick = () => {
@@ -131,6 +137,7 @@ export default function ReminderTimes() {
       changeTimesToArray(numberOfTimes);
      const arrayFromTimes = handleDossageArray(numberOfTimes);
            setDossageArray(arrayFromTimes);
+           getDossageArray(arrayFromTimes);
 
   }
 
@@ -141,6 +148,7 @@ export default function ReminderTimes() {
     let decToHour = timeArray.map(x => DecimalToHour(x));
     let stringToTimeArray = decToHour.map(x => StringToTime(x));
         setTimeArray(stringToTimeArray);
+        getTimeArray(stringToTimeArray);
 
   }
 
@@ -149,6 +157,7 @@ export default function ReminderTimes() {
   	const newDossageArray = Array.from(dossageArray);
   	newDossageArray[index] = event.target.value;
   	      setDossageArray(newDossageArray);
+  	      getDossageArray(newDossageArray);
 
   }
 
@@ -158,6 +167,7 @@ export default function ReminderTimes() {
      
      newTimeArray[index] = date;
      setTimeArray(newTimeArray);
+     getTimeArray(newTimeArray);
      
 
   }

@@ -1,39 +1,34 @@
 import React from 'react';
-
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
-
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
-
-
 import MedName from './MedName';
 import ReminderTimes from './ReminderTimes';
 import './AddMed.css';
 
-
-const styles = (theme) => ( {
-    
+const styles = (theme) => ( { 
     root: {
         flexGrow: 1,
         flexWrap: "wrap"
       },
- 
 }
 )
 
 class AddMed extends React.Component {
   
- constructor(){
-       super();
-       this.state = {
+
+       state = {
            medicationName: '',
+           dossageArray: [],
+           timeArray: [],
            setReminderTime: false
 
        }
-   }
+   
 
+    
 
    nameHandler = (val) => {
     this.setState({
@@ -42,35 +37,85 @@ class AddMed extends React.Component {
   }
 
   handleNext = () => {
-  	if(this.state.medicationName !== ''){
+  	if(this.state.medicationName !== '' ){
   		this.setState({
   			setReminderTime: true
   		})
   	}
+   
+    
+    if(this.state.medicationName !== '' && this.state.dossageArray.length !== 0 && this.state.timeArray.length !== 0){
+      console.log(this.state.dossageArray);
+      console.log(this.state.timeArray);
+    }
+
   }
 
+  getTimeArray = (timeArray) => {
+      this.setState({
+           timeArray
+         })
+  }
+
+  getDossageArray = (dossageArray) => {
+      this.setState({
+        dossageArray
+      })
+  }
   
 
   render(){
 
-       return (
-
-
-  
+       return ( 
             
   	<div className="addMedContainer">
   	     <div className="addMed">
-              <Grid id="productGrid" item xs={12} sm={8} md={6} lg={4} xl={3}  > <MedName nameHandler={this.nameHandler} />  </Grid>
+              <Grid 
+                    id="productGrid" 
+                    item 
+                    xs={12} 
+                    sm={8} 
+                    md={6} 
+                    lg={4} 
+                    xl={3}  
+               >
+                    <MedName nameHandler={this.nameHandler} />  
+              </Grid>
   	
              
              {this.state.setReminderTime && (
-             	<Slide direction="up" in={this.state.setReminderTime} mountOnEnter unmountOnExit>
-             	 <Grid id="productGrid" item xs={12} sm={8} md={6} lg={4} xl={3}  > <ReminderTimes/>  </Grid>
-  	             </Slide>
+               	<Slide 
+                   direction="up" 
+                   in={this.state.setReminderTime} 
+                   mountOnEnter 
+                   unmountOnExit
+                   >
+                     	 <Grid 
+                          id="productGrid" 
+                          item 
+                          xs={12}
+                          sm={8}
+                          md={6} 
+                          lg={4} 
+                          xl={3}  
+                          > 
+                             <ReminderTimes 
+                                getTimeArray={this.getTimeArray} 
+                                getDossageArray={this.getDossageArray}
+                              />  
+                       </Grid>
+  	            </Slide>
              	
              	)}
              
-             <Grid id="productGrid" item xs={10} sm={8} md={6} lg={4} xl={3}  > 
+             <Grid 
+                 id="productGrid" 
+                 item 
+                 xs={10} 
+                 sm={8} 
+                 md={6} 
+                 lg={4} 
+                 xl={3}  > 
              
               <div id="cardActions">
                   <Button 
@@ -93,8 +138,6 @@ class AddMed extends React.Component {
   }
  
 }
-
-
 
 export default withStyles(styles)(AddMed);
 
