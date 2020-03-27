@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, LOADING_USER, MARK_NOTIFICATIONS_READ,
-SET_USER_ORDERS, LOADING_ORDER, CLEAR_CART, LOADING_PAYMENT  } from '../types';
+SET_USER_ORDERS, LOADING_ORDER, CLEAR_CART, LOADING_PAYMENT, LOADING_MEDICATION, SET_MEDICATION  } from '../types';
 
 
 
@@ -63,6 +63,32 @@ axios.get('/user')
          })
      })
      .catch(err => console.log(err));
+}
+
+
+export const addMedication = (medication) => (dispatch) => {
+
+    
+    dispatch({ type: LOADING_MEDICATION})
+
+    axios.post('/medication', medication)
+         .then(res => {
+            dispatch(getMedications());
+         })
+         .catch(err => console.log(err));
+}
+
+
+export const getMedications = () => (dispatch) => {
+    dispatch({ type: LOADING_MEDICATION })
+    axios.get('/medication')
+         .then(res => {
+             dispatch({
+                 type: SET_MEDICATION,
+                 payload: res.data
+             })
+         })
+         .catch(err => console.log(err));
 }
 
 export const placeOrder = (orderData) => (dispatch) => {
