@@ -8,6 +8,11 @@ import MedName from './MedName';
 import ReminderTimes from './ReminderTimes';
 import './AddMed.css';
 
+
+import { connect } from 'react-redux';
+import {  } from '../../redux/actions/userActions';
+
+
 const styles = (theme) => ( { 
     root: {
         flexGrow: 1,
@@ -15,6 +20,8 @@ const styles = (theme) => ( {
       },
 }
 )
+
+
 
 class AddMed extends React.Component {
   
@@ -27,7 +34,6 @@ class AddMed extends React.Component {
 
        }
    
-
     
 
    nameHandler = (val) => {
