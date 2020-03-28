@@ -124,7 +124,7 @@ export default function ReminderTimes(props) {
   }
 
   const handleDossageArray = (number) => {
-        const arr = Array(number).fill(1)
+        const arr = Array(number).fill("1")
         return arr;
   }
 
