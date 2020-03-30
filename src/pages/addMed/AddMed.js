@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { withLastLocation } from 'react-router-last-location';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
@@ -10,7 +12,7 @@ import './AddMed.css';
 
 
 import { connect } from 'react-redux';
-import {  } from '../../redux/actions/userActions';
+import { addMedication } from '../../redux/actions/userActions';
 
 
 const styles = (theme) => ( { 
@@ -25,7 +27,6 @@ const styles = (theme) => ( {
 
 class AddMed extends React.Component {
   
-
        state = {
            medicationName: '',
            dossageArray: [],
@@ -33,13 +34,34 @@ class AddMed extends React.Component {
            setReminderTime: false
 
        }
-   
-    
 
    nameHandler = (val) => {
     this.setState({
       medicationName: val
     })
+  }
+
+  
+  handleStateData = (currentState) => {
+
+            let keys = currentState.timeArray;
+            let values = currentState.dossageArray;
+
+            let result = {};
+
+            
+            keys.forEach((key, i) => {
+
+             return result[key] = {
+                               time: key,
+                               dossage: values[i],
+                               taken: false
+                             }
+
+            });
+
+            result.medName = currentState.medicationName;
+            return result;
   }
 
   handleNext = () => {
@@ -53,9 +75,13 @@ class AddMed extends React.Component {
     if(this.state.medicationName !== '' && this.state.dossageArray.length !== 0 && this.state.timeArray.length !== 0){
       console.log(this.state.dossageArray);
       console.log(this.state.timeArray);
+      let arrayToDatabase = this.handleStateData(this.state)
+     // this.props.addMedication(arrayToDatabase, this.props.history, this.state.lastLocation);
+     console.log(arrayToDatabase);
     }
 
   }
+
 
   getTimeArray = (timeArray) => {
       this.setState({
@@ -63,12 +89,14 @@ class AddMed extends React.Component {
          })
   }
 
+
   getDossageArray = (dossageArray) => {
       this.setState({
         dossageArray
       })
   }
   
+
 
   render(){
 
@@ -145,5 +173,16 @@ class AddMed extends React.Component {
  
 }
 
-export default withStyles(styles)(AddMed);
 
+const mapStateToProps = state => ({
+    user: state.user,
+    data: state.data
+})
+
+const mapActionsToProps = {
+    addMedication
+}
+
+
+
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(withRouter(withLastLocation(AddMed))));
