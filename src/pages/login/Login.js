@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
- import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { withLastLocation } from 'react-router-last-location';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
