@@ -66,7 +66,7 @@ axios.get('/user')
 }
 
 
-export const addMedication = (medication) => (dispatch) => {
+export const addMedication = (medication, history) => (dispatch) => {
 
     
     dispatch({ type: LOADING_MEDICATION})

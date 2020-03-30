@@ -5,7 +5,9 @@ import {SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_PRO
 const initialState = {
     authenticated: false,
     loading: false,
+    loadingMedication: false,
     credentials: {},
+    medications: {},
     loadingOrder: false,
     loadingPayment: false,
     likes: [],
@@ -58,6 +60,11 @@ export default function(state = initialState, action){
                 return {
                     ...state,
                     loading: true
+                }
+            case LOADING_MEDICATION:
+                return {
+                    ...state,
+                    loadingMedication: true
                 }
             case LIKE_PRODUCT:
                 return {
