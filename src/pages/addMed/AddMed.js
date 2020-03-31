@@ -73,11 +73,10 @@ class AddMed extends React.Component {
    
     
     if(this.state.medicationName !== '' && this.state.dossageArray.length !== 0 && this.state.timeArray.length !== 0){
-      console.log(this.state.dossageArray);
-      console.log(this.state.timeArray);
+      
       let arrayToDatabase = this.handleStateData(this.state)
-     // this.props.addMedication(arrayToDatabase, this.props.history, this.state.lastLocation);
-     console.log(arrayToDatabase);
+     this.props.addMedication(arrayToDatabase, this.props.history);
+     
     }
 
   }

@@ -73,6 +73,7 @@ class Medications extends Component {
         user: { 
            credentials: {  createdAt, firstName, lastName,phoneNumber, address, state},
            loading,
+           loadingMedication,
            authenticated
       }
     } = this.props;
@@ -84,10 +85,10 @@ class Medications extends Component {
         const medicImage = true ? " medicImage": ""
 
 
-		const display =  loading ? (
+		const display =  (loading || loadingMedication) ? (
 			             
 					     
-					      <Backdrop className={classes.backdrop} open={loading} onClick={this.handleClose}>
+					      <Backdrop className={classes.backdrop} open={loading || loadingMedication } onClick={this.handleClose}>
 					        <CircularProgress color="inherit" />
 					      </Backdrop>
 					   

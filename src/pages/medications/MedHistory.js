@@ -24,7 +24,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import TimerOffIcon from '@material-ui/icons/TimerOff';
 
-import mockData from './Data';
+import { useSelector } from 'react-redux';
+
+
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -48,7 +50,9 @@ const MedHistory = props => {
 
   const classes = useStyles();
 
-  const [products] = useState(mockData);
+  
+
+   let userMeds = useSelector(state => state.user.medication);
 
   return (
     <Grid
@@ -66,18 +70,18 @@ const MedHistory = props => {
       className={clsx(classes.root, className)}
     >
       <CardHeader 
-        subtitle={`${products.length} in total`}
+        
         title=""
       />
       <Divider />
       <CardContent className={classes.content}>
         <List>
-          {products.map((product, i) => (
+          {userMeds.map((meds, i) => (
             <ListItem
-              divider={i < products.length - 1}
-              key={product.id}
+              divider={i < userMeds.length - 1}
+              key={meds.medId}
             >
-             <Link to={`/viewMed/:${product.id}`}>
+             <Link to={`/viewMed/:${meds.medId}`}>
               <ListItemAvatar >
                
               <PlaylistPlayIcon color="primary" />
@@ -85,10 +89,10 @@ const MedHistory = props => {
               </ListItemAvatar>
               </Link>
               <ListItemText
-                primary={product.name}
-                secondary={`Updated ${product.updatedAt.fromNow()}`}
+                primary={meds.medName}
+                secondary={`Updated ${new Date(meds.createdAt)}`}
               />
-              <Link to={`/viewMed/:${product.id}`}>
+              <Link to={`/viewMed/${meds.medId}`}>
               <IconButton
                 edge="end"
                 size="small"
