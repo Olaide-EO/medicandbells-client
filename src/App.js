@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
+import { PersistGate } from 'redux-persist/integration/react'
 import ScrollToTop from 'react-router-scroll-top'
 
 
@@ -20,7 +21,9 @@ import LoginRoute from './util/LoginRoute';
 
 // Redux
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import {store, persistor} from './redux/store';
+
+
 import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser, getUserData } from './redux/actions/userActions';
 
@@ -72,7 +75,7 @@ class App extends Component {
         return (
           <MuiThemeProvider theme={theme}>
           <Provider store={store}>
-       
+           <PersistGate loading={null} persistor={persistor}>
           <Router>
           <ScrollToTop/>
           <LastLocationProvider>
@@ -91,7 +94,7 @@ class App extends Component {
 
                <AuthRoute exact path="/addMed" component={AddMed} />
 
-               <AuthRoute exact path="/viewMed" component={ViewMed} />
+               <AuthRoute exact path="/viewMed/:medId" component={ViewMed} />
 
                <Route exact path="/medications" component={Medications} />
 
@@ -100,6 +103,7 @@ class App extends Component {
            
             </LastLocationProvider>
           </Router>
+          </PersistGate>
           </Provider>
 
           </MuiThemeProvider>
