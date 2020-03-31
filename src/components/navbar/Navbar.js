@@ -13,21 +13,26 @@ export default function Navbar(props) {
   
   let dataState = useSelector(state => state.data);
 
+  const handleClick = () => {
+    const menuButton = document.getElementById('menu-btn');
+        menuButton.click();
+  }
+
   let navLink = !stateForNavbar.authenticated ? (
 
           <ul className="menu">
           
           <li>
-            <Link to='/login'>Login</Link>
+            <Link to='/login' onClick={handleClick}>Login</Link>
           </li>
           <li>
-            <Link to='/signup'>Signup</Link>                                                       
+            <Link to='/signup' onClick={handleClick}>Signup</Link>                                                       
           </li>
           <li>
-            <Link to='/faq'>Faq</Link>
+            <Link to='/faq' onClick={handleClick}>Faq</Link>
           </li>
           <li>
-            <Link to='/contactus'>Contact Us</Link>
+            <Link to='/contactus' onClick={handleClick}>Contact Us</Link>
           </li>
         </ul>
     ) : (
@@ -35,13 +40,13 @@ export default function Navbar(props) {
            <ul className="menu">
           
           <li>
-            <Link to='/medications'>Medications</Link>
+            <Link to='/medications' onClick={handleClick}>Medications</Link>
           </li>
           <li>
-            <Link to='/addMed'>Add New</Link>                                                       
+            <Link to='/addMed' onClick={handleClick}>Add New</Link>                                                       
           </li>
           <li>
-            <Link to='/profile'>Profile</Link>
+            <Link to='/profile' onClick={handleClick}>Profile</Link>
           </li>
           
         </ul>
