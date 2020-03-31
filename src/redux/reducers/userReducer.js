@@ -7,7 +7,7 @@ const initialState = {
     loading: false,
     loadingMedication: false,
     credentials: {},
-    medications: {},
+    medication: [],
     loadingOrder: false,
     loadingPayment: false,
     likes: [],
@@ -46,6 +46,21 @@ export default function(state = initialState, action){
                     loadingOrder: false,
                     loadingPayment: false
                 };
+
+            case SET_MEDICATION:
+
+                return {
+                    ...state,
+                    medication: [...action.payload],
+                    loadingMedication: false
+                }
+
+            case LOADING_MEDICATION:
+                return {
+                    ...state,
+                    loadingMedication: true
+                }
+
             case LOADING_ORDER:
                 return {
                     ...state,
@@ -61,11 +76,7 @@ export default function(state = initialState, action){
                     ...state,
                     loading: true
                 }
-            case LOADING_MEDICATION:
-                return {
-                    ...state,
-                    loadingMedication: true
-                }
+           
             case LIKE_PRODUCT:
                 return {
                     ...state,

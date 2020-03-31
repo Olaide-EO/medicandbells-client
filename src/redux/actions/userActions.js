@@ -74,6 +74,7 @@ export const addMedication = (medication, history) => (dispatch) => {
     axios.post('/medication', medication)
          .then(res => {
             dispatch(getMedications());
+            history.push("/medications")
          })
          .catch(err => console.log(err));
 }
