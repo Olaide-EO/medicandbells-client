@@ -34,14 +34,19 @@ class ViewMed extends React.Component{
 	  delete myMedCrop.medId;
 	  delete myMedCrop.createdAt;
 	  delete myMedCrop.userId
-	 
+	 let anotherMed = Object.entries(myMedCrop).forEach(([key, value]) => {
+
+          return(<div> <div>time: {value.time}</div> <div>taken: {value.taken}</div> <div>dossage: {value.dossage}</div></div>)	
+
+        }
+        )
 
   	 return (
     <div className={classes.root}>
       
-          <SingleMed />
-        {console.log(newMed)}
+          
         {console.log(myMedCrop)}
+        {anotherMed}
     </div>
   );
   }

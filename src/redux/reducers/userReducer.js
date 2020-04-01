@@ -28,6 +28,8 @@ export default function(state = initialState, action){
                      loading: false,
                      credentials: {},
                      loadingOrder: false,
+                     loadingMedication: false,
+                     medication: [],
                      likes: [],
                      orders: [],
                      shippingAdress: {}
@@ -37,6 +39,7 @@ export default function(state = initialState, action){
                     ...state,
                     authenticated: true,
                     loading: false,
+                    loadingMedication: false,
                     ...action.payload
                 };
             case SET_USER_ORDERS:
@@ -52,7 +55,8 @@ export default function(state = initialState, action){
                 return {
                     ...state,
                     medication: [...action.payload],
-                    loadingMedication: false
+                    loadingMedication: false,
+                    loading: false,
                 }
 
             case LOADING_MEDICATION:
