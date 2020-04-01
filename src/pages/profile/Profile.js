@@ -2,8 +2,12 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
-import  AccountProfile  from './components/AccounProfile/AccountProfile';
-import  AccountDetails  from './components/AccountDetails/AccountDetails';
+import  AccountProfile  from './AccountProfile';
+import  AccountDetails  from './AccountDetails';
+
+
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
