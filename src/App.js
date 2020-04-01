@@ -12,6 +12,11 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import themeFile from './util/theme';
 
+
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
 import './pages/login/fonts/material-icon/css/material-design-iconic-font.css';
 import './pages/login/fonts/material-icon/css/material-design-iconic-font.min.css';
 
@@ -55,6 +60,7 @@ const token = localStorage.FBIdToken;
 
 
 
+setTimeout(function(){
 
 if(token){
  const decodedToken = jwtDecode(token);
@@ -69,13 +75,19 @@ if(token){
 }
 
 
+ }, 3000);
+
+
+
 //<random hash which is unique to user>@users.the-site.tld
 class App extends Component {
       render(){
         return (
           <MuiThemeProvider theme={theme}>
           <Provider store={store}>
-           <PersistGate loading={null} persistor={persistor}>
+           <PersistGate loading={<Backdrop open={true}>
+                  <CircularProgress color="inherit" />
+                </Backdrop>} persistor={persistor}>
           <Router>
           <ScrollToTop/>
           <LastLocationProvider>
