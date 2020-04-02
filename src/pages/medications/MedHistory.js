@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-
+import { SET_SINGLE_MEDICATION } from '../../redux/types';
 
 import {
   Card,
@@ -24,7 +24,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import TimerOffIcon from '@material-ui/icons/TimerOff';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 
@@ -48,6 +48,14 @@ const useStyles = makeStyles(() => ({
 const MedHistory = props => {
   const { className, ...rest } = props;
 
+  const dispatch = useDispatch();
+
+  const handleSingleClick = (id) => {
+    
+    dispatch({ type: SET_SINGLE_MEDICATION,
+               payload: id });
+
+  }
   const classes = useStyles();
 
   
@@ -81,7 +89,7 @@ const MedHistory = props => {
               divider={i < userMeds.length - 1}
               key={meds.medId}
             >
-             <Link to={`/viewMed/:${meds.medId}`}>
+             <Link onClick={() => handleSingleClick(meds.medId) } to={`/viewMed/${meds.medId}`}>
               <ListItemAvatar >
                
               <PlaylistPlayIcon color="primary" />
@@ -92,7 +100,7 @@ const MedHistory = props => {
                 primary={meds.medName}
                 secondary={`Updated ${new Date(meds.createdAt)}`}
               />
-              <Link to={`/viewMed/${meds.medId}`}>
+              <Link onClick={() => handleSingleClick(meds.medId) } to={`/viewMed/${meds.medId}`}>
               <IconButton
                 edge="end"
                 size="small"
