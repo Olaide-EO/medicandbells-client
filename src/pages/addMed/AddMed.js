@@ -52,7 +52,7 @@ class AddMed extends React.Component {
             
             keys.forEach((key, i) => {
 
-             return result[key] = {
+             return result[i+1] = {
                                time: key,
                                dossage: values[i],
                                taken: false
@@ -61,6 +61,7 @@ class AddMed extends React.Component {
             });
 
             result.medName = currentState.medicationName;
+            result.freq = keys.length;
             return result;
   }
 
