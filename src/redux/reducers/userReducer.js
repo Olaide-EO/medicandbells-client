@@ -1,5 +1,6 @@
 import {SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_PRODUCT, UNLIKE_PRODUCT,
- SET_USER_ORDERS, LOADING_ORDER, SET_SHIPPING_ADDRESS, LOADING_PAYMENT, LOADING_MEDICATION, SET_MEDICATION
+ SET_USER_ORDERS, LOADING_ORDER, SET_SHIPPING_ADDRESS, LOADING_PAYMENT, LOADING_MEDICATION, SET_MEDICATION, 
+ SET_SINGLE_MEDICATION
 } from '../types';
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
     loadingPayment: false,
     likes: [],
     orders: [],
-    shippingAdress: {}
+    shippingAdress: {},
+    singleMedication: {}
 }
 
 export default function(state = initialState, action){
@@ -103,6 +105,16 @@ export default function(state = initialState, action){
                         shippingAddress: {...state.shippingAddress,
                                           ...action.payload}
                     }
+                case SET_SINGLE_MEDICATION:
+
+                      let medIndex = state.medication.findIndex(
+                                   (med) => med.medId === action.payload );
+
+                          let newMed = state.medication[medIndex];
+                          return {
+                            ...state,
+                            singleMedication: newMed
+                          }
                 default:
                 return state;
     }
