@@ -8,9 +8,7 @@ import { connect } from 'react-redux';
 
 
 const styles = (theme) => ({
-  root: {
-    padding: theme.spacing(1)
-  }
+   padding: theme.spacing(1)
 });
 
 class ViewMed extends React.Component{
@@ -21,33 +19,63 @@ class ViewMed extends React.Component{
   render(){
    
    const { classes } = this.props;
-   const { medication } = this.props.user;
+   const { singleMedication } = this.props.user;
 
-  let medIndex = medication.findIndex(
-               (med) => med.medId === this.props.match.params.medId );
 
-      let newMed = medication[medIndex];
-
+	 	  
+	  let iterateArr = Array.from(Array(singleMedication.freq), (_, i) => i+1);
 	  
-	   let   myMedCrop = JSON.parse(JSON.stringify(newMed));
-	  delete myMedCrop.medName;
-	  delete myMedCrop.medId;
-	  delete myMedCrop.createdAt;
-	  delete myMedCrop.userId
-	 let anotherMed = Object.entries(myMedCrop).forEach(([key, value]) => {
-
-          return(<div> <div>time: {value.time}</div> <div>taken: {value.taken}</div> <div>dossage: {value.dossage}</div></div>)	
-
-        }
-        )
+      
+	 let anotherMed =  iterateArr.map((val, i) => ( 
+							          	 
+							          	 <React.Fragment>
+							          	 {console.log(`${singleMedication[val].time}`)}
+							          	 <SingleMed />
+							          	 </React.Fragment>
+							          	) 
+							          	 
+							      )
 
   	 return (
-    <div className={classes.root}>
-      
-          
-        {console.log(myMedCrop)}
-        {anotherMed}
+    
+
+       <div className="addMedContainer">
+  	     <div className="addMed">
+              <Grid 
+                    id="productGrid" 
+                    item 
+                    xs={12} 
+                    sm={12} 
+                    md={12} 
+                    lg={12} 
+                    xl={12}  
+               >
+                    <div>Hello Goons</div>
+              </Grid>
+  	
+             
+             
+             
+             <Grid 
+                 id="productGrid" 
+                 item 
+                 xs={12} 
+                 sm={12} 
+                 md={12} 
+                 lg={12} 
+                 xl={12}  > 
+             
+                    <div>I am a Billionaire in dollars and pounds</div>
+                    {anotherMed}
+               </Grid>
+  	
+             
+         </div>
     </div>
+
+
+
+
   );
   }
  
