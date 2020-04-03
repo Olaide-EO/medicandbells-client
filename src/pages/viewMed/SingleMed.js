@@ -8,11 +8,25 @@ import MoneyIcon from '@material-ui/icons/Money';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import TimerOffIcon from '@material-ui/icons/TimerOff';
 import Container from '@material-ui/core/Container';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import DoneIcon from '@material-ui/icons/Done';
+import CancelIcon from '@material-ui/icons/Cancel';
+
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import TimeSelect from '../addMed/TimeSelect';
+
+import { connect } from 'react-redux';
+
+import { takeMedication, cancelMedication } from '../../redux/userActions';
 
 
 const styles = (theme) => ({
   mainRoot: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(2)
   },
   root: {
     height: '100%',
@@ -26,7 +40,7 @@ const styles = (theme) => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.error.main,
+    backgroundColor: theme.palette.primary.main,
     height: 56,
     width: 56
   },
@@ -34,15 +48,26 @@ const styles = (theme) => ({
     height: 32,
     width: 32
   },
-  difference: {
+  notification: {
     marginTop: theme.spacing(2),
     display: 'flex',
     alignItems: 'center'
   },
-  differenceIcon: {
+  notificationAction: {
+    marginTop: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+
+  },
+  notificationIcon: {
     color: theme.palette.error.dark
   },
-  differenceValue: {
+  notificationActionIcon: {
+    color: theme.palette.primary.main
+  },
+
+  notificationValue: {
     color: theme.palette.error.dark,
     marginRight: theme.spacing(1)
   }
@@ -50,13 +75,48 @@ const styles = (theme) => ({
 
 class SingleMed extends React.Component{
 
+      state = {
+        date: "",
+        index: 0
+      }
+
+  setTimeInArray = (index, date) => {
+      this.setState({
+        date: date,
+        index: index
+      })
+  }
+
+  handleTakeDossage = () => {
+    const { index, user: {singleMedication} } = this.props;
+   
+
+    this.props.takeMedication({
+      userId: singleMedication.userId,
+      medId: singleMedication.medId,
+      index: index
+    })
+
+  }
+
+  handleCancelDossage = () => {
+    const { index, user: { singleMedication} } = this.props;
+    
+
+    this.props.takeMedication({
+      userId: singleMedication.userId,
+      medId: singleMedication.medId,
+      index: index
+    })
+  }
+
   render(){
-  const { classes, className, ...rest } = this.props;
+  const { classes, className, time, taken, dossage, index, ...rest } = this.props;
 
   
 
   return (
-     <Container className={classes.root} component="main" maxWidth="xs">
+     <Container className={classes.root} component="main" maxWidth="xs" id="singleMed">
       
 
     <Card
@@ -68,38 +128,71 @@ class SingleMed extends React.Component{
           container
           justify="space-between"
         >
-          <Grid item>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-              variant="body2"
-            >
-              BUDGET
-            </Typography>
-            <Typography variant="h3">$24,000</Typography>
+          <Grid id="singleMedTimeContainer" item>
+                <Typography
+                  className={classes.title}
+                  color="textSecondary"
+                  gutterBottom
+                  variant="body2"
+                >
+                    Take {dossage}
+                </Typography>
+                <Typography 
+                    variant="h4"
+                    id="singleMedTime"
+                    >
+                  
+                    <TimeSelect 
+                         time={time} 
+                         setTimeInArray={this.setTimeInArray} 
+                         index={index}
+                    />
+                </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <PlaylistPlayIcon className={classes.icon} />
+
+               <Tooltip title="Take Dossage" placement="top">
+                  <IconButton style={{color: '#fff'}} onClick={this.handleTakeDossage} >
+                   <DoneIcon className={classes.icon} />
+                    </IconButton>
+                </Tooltip>
+                
             </Avatar>
           </Grid>
         </Grid>
-        <div className={classes.difference}>
-          <ArrowDownwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
-            12%
-          </Typography>
-          <Typography
-            className={classes.caption}
-            variant="caption"
-          >
-            Since last month
-          </Typography>
-        </div>
+        
+
+         <Grid
+          container
+          justify="space-between"
+        >
+                <div className={classes.notification}>
+                 { !taken && <NotificationsActiveIcon className={classes.notificationIcon} /> }
+                 { taken &&  <NotificationsActiveIcon className={classes.notificationIcon} />}
+
+                  <Typography
+                    className={classes.caption}
+                    variant="caption"
+                  >
+                   {taken && <div>Dossage taken</div>}{!taken && <div>Dossage not taken</div>}
+                  </Typography>
+                </div>
+
+
+                <div  className={classes.notificationAction}>
+                   
+                   <Tooltip title="Cancel Alarm" placement="top">
+                  <IconButton style={{color: '#fff'}} onClick={this.handleCancelDossage} >
+                <CancelIcon className={classes.notificationIcon} />
+                   </IconButton>
+                   </Tooltip>
+                
+                
+
+                </div>
+
+         </Grid>
       </CardContent>
     </Card>
     </Container>
@@ -111,4 +204,21 @@ SingleMed.propTypes = {
   className: PropTypes.string
 };
 
-export default withStyles(styles)(SingleMed);
+const mapStateToProps = (state) => ({
+    user: state.user,
+})
+
+const mapActionsToProps = {
+    takeMedication,
+    cancelMedication
+}
+
+
+
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(SingleMed));
+
+
+
+
+
+//<CheckCircleIcon className={classes.notificationActionIcon} />
