@@ -8,7 +8,7 @@ const initialState = {
     loading: false,
     loadingMedication: false,
     credentials: {},
-    medication: [],
+    medication: undefined,
     loadingOrder: false,
     loadingPayment: false,
     likes: [],
@@ -31,7 +31,7 @@ export default function(state = initialState, action){
                      credentials: {},
                      loadingOrder: false,
                      loadingMedication: false,
-                     medication: [],
+                     medication: undefined,
                      likes: [],
                      orders: [],
                      shippingAdress: {}

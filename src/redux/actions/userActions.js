@@ -1,6 +1,10 @@
 import axios from 'axios';
-import {SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED, LOADING_USER, MARK_NOTIFICATIONS_READ,
-SET_USER_ORDERS, LOADING_ORDER, CLEAR_CART, LOADING_PAYMENT, LOADING_MEDICATION, SET_MEDICATION  } from '../types';
+import {
+        SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED,
+         LOADING_USER, MARK_NOTIFICATIONS_READ, SET_USER_ORDERS, LOADING_ORDER, 
+         CLEAR_CART, LOADING_PAYMENT, LOADING_MEDICATION, SET_MEDICATION, 
+         TAKE_MEDICATION, CANCEL_MEDICATION  
+     } from '../types';
 
 
 
@@ -37,7 +41,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
         setAuthorizationHeader(res.data.token)
         dispatch(getUserData());
         dispatch({ type: CLEAR_ERRORS})
-        history.push('/medicatons');
+        history.push('/medications');
        })
     .catch(err => {
         dispatch({
@@ -91,6 +95,28 @@ export const getMedications = () => (dispatch) => {
          })
          .catch(err => console.log(err));
 }
+
+export const takeMedication = (medData) => (dispatch) => {
+      dispatch({ type: LOADING_MEDICATION })
+      axios.post('/medication/take', medData)
+           .then(res => {
+                dispatch({
+                    type: SET_MEDICATION,
+                    payload: res.data
+                })
+           })
+}
+
+export const cancelMedication = (medData) => (dispatch) => {
+    dispatch({ type: LOADING_MEDICATION })
+     axios.post('/medication/cancel', medData)
+           .then(res => {
+                dispatch({
+                    type: SET_MEDICATION,
+                    payload: res.data
+                })
+           })
+} 
 
 export const placeOrder = (orderData) => (dispatch) => {
     dispatch({ type: LOADING_ORDER })
