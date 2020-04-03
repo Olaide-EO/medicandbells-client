@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
 import SingleMed from './SingleMed'
+import './ViewMed.css';
 
 import { connect } from 'react-redux';
 
@@ -12,8 +13,14 @@ const styles = (theme) => ({
 });
 
 class ViewMed extends React.Component{
-
+      
+      state = {
+      	
+      }
   
+  componentWillMount(){
+
+  }
   
 
   render(){
@@ -28,10 +35,10 @@ class ViewMed extends React.Component{
       
 	 let anotherMed =  iterateArr.map((val, i) => ( 
 							          	 
-							          	 <React.Fragment>
-							          	 {console.log(`${singleMedication[val].time}`)}
-							          	 <SingleMed />
-							          	 </React.Fragment>
+							          	 <SingleMed time={singleMedication[val].time} 
+							          	 taken={singleMedication[val].taken}
+							          	 dossage={singleMedication[val].dossage}
+							          	 index={val} />
 							          	) 
 							          	 
 							      )
@@ -39,35 +46,16 @@ class ViewMed extends React.Component{
   	 return (
     
 
-       <div className="addMedContainer">
-  	     <div className="addMed">
-              <Grid 
-                    id="productGrid" 
-                    item 
-                    xs={12} 
-                    sm={12} 
-                    md={12} 
-                    lg={12} 
-                    xl={12}  
-               >
-                    <div>Hello Goons</div>
-              </Grid>
-  	
+       <div className="viewMedContainer">
+  	     <div className="viewMed">
              
              
              
-             <Grid 
-                 id="productGrid" 
-                 item 
-                 xs={12} 
-                 sm={12} 
-                 md={12} 
-                 lg={12} 
-                 xl={12}  > 
+      
              
-                    <div>I am a Billionaire in dollars and pounds</div>
+                    
                     {anotherMed}
-               </Grid>
+               
   	
              
          </div>
