@@ -1,0 +1,32 @@
+#singleMed{
+	margin-bottom: 1rem;
+}
+
+.viewMedContainer{
+  width: 90%;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 2rem;
+}
+
+.viewMed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#singleMedTime{
+	max-width: 40%;
+}
+
+#singleMedTimeContainer{
+	max-width: 40%;
+}
+
+@media (max-width: 768px) {
+
+.viewMedContainer{
+ width: 95%;
+  margin-top: 2rem;
+}
+}
