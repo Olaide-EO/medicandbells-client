@@ -85,9 +85,9 @@ class App extends Component {
         return (
           <MuiThemeProvider theme={theme}>
           <Provider store={store}>
-           <PersistGate loading={<Backdrop open={true}>
+           <PersistGate loading={(<Backdrop open={true}>
                   <CircularProgress color="inherit" />
-                </Backdrop>} persistor={persistor}>
+                </Backdrop>)} persistor={persistor}>
           <Router>
           <ScrollToTop/>
           <LastLocationProvider>
