@@ -74,15 +74,16 @@ class Medications extends Component {
            credentials: {  createdAt, firstName, lastName,phoneNumber, address, state},
            loading,
            loadingMedication,
-           authenticated
+           authenticated,
+           medication
       }
     } = this.props;
 
 
 
-        const history = authenticated ? (<MedHistory/>) : (<Noimage/>)
+        const history = !medication ? <div>love laide</div> : medication.length == 0 ? <Noimage/> : <MedHistory/>
 
-        const medicImage = true ? " medicImage": ""
+        const medicImage = !medication ? "" : medication.length == 0 ? "" : " medicImage" 
 
 
 		const display =  (loading || loadingMedication) ? (
