@@ -16,11 +16,11 @@ const LoginRoute = ({ component: Component, authenticated, ...rest }) => (
 );
 
 const mapStateToProps = (state) => ({
-    authenticated: state.user.authenticated
+    authenticated: state.auth.authenticated
 })
 
 LoginRoute.propTypes = {
-    user: PropTypes.object
+    auth: PropTypes.object
 }
 
 export default connect(mapStateToProps)(LoginRoute);

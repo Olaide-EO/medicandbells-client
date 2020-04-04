@@ -81,7 +81,7 @@ class Medications extends Component {
 
 
 
-        const history = !medication ? <div>love laide</div> : medication.length == 0 ? <Noimage/> : <MedHistory/>
+        const history = !medication ? <div></div> : medication.length == 0 ? <Noimage/> : <MedHistory/>
 
         const medicImage = !medication ? "" : medication.length == 0 ? "" : " medicImage" 
 

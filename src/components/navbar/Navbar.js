@@ -9,9 +9,9 @@ import { useSelector } from 'react-redux';
 
 export default function Navbar(props) {
 
-  let stateForNavbar = useSelector(state => state.user);
+  let stateForNavbar = useSelector(state => state.auth);
   
-  let dataState = useSelector(state => state.data);
+  //let dataState = useSelector(state => state.data);
 
   const handleClick = () => {
     const menuButton = document.getElementById('menu-btn');

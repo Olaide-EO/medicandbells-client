@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 export default function Banner() {
 
-  let authenticated = useSelector(state => state.user.authenticated);
+  let authenticated = useSelector(state => state.auth.authenticated);
 
   return (
     <div className="greet-main" id="greeting">
