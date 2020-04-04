@@ -60,8 +60,8 @@ const token = localStorage.FBIdToken;
 
 
 
-setTimeout(function(){
 
+/*
 if(token){
  const decodedToken = jwtDecode(token);
  if(decodedToken.exp * 1000 < Date.now()){
@@ -75,7 +75,7 @@ if(token){
 }
 
 
- }, 3000);
+ */
 
 
 
