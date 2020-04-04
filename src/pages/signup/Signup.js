@@ -129,7 +129,7 @@ handlePasswordChange = (event) => {
                 error={errors.firstName ? true : false}
                 value={this.state.firstName} 
                 onChange={this.handleChange}
-                autoFocus
+                
               />
             </Grid>
             <Grid item xs={12} sm={6}>

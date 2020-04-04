@@ -21,7 +21,7 @@ import TimeSelect from '../addMed/TimeSelect';
 
 import { connect } from 'react-redux';
 
-import { takeMedication, cancelMedication } from '../../redux/userActions';
+import { takeMedication, cancelMedication } from '../../redux/actions/userActions';
 
 
 const styles = (theme) => ({
@@ -90,28 +90,31 @@ class SingleMed extends React.Component{
   handleTakeDossage = () => {
     const { index, user: {singleMedication} } = this.props;
    
-
-    this.props.takeMedication({
-      userId: singleMedication.userId,
-      medId: singleMedication.medId,
-      index: index
-    })
+    let newSingleMed = JSON.parse(JSON.stringify(singleMedication));
+     
+       if( !newSingleMed[index].taken ){
+           
+           newSingleMed[index].taken = true;
+           this.props.takeMedication(newSingleMed)
+       }
 
   }
 
   handleCancelDossage = () => {
     const { index, user: { singleMedication} } = this.props;
     
+    let anotherSingleMed = JSON.parse(JSON.stringify(singleMedication));
 
-    this.props.takeMedication({
-      userId: singleMedication.userId,
-      medId: singleMedication.medId,
-      index: index
-    })
+        if( !anotherSingleMed[index].cancel){
+
+          anotherSingleMed[index].cancel = true;
+          this.props.cancelMedication(anotherSingleMed)
+        }
+        
   }
 
   render(){
-  const { classes, className, time, taken, dossage, index, ...rest } = this.props;
+  const { classes, className, time, taken, dossage, index, cancel, ...rest } = this.props;
 
   
 
@@ -168,14 +171,15 @@ class SingleMed extends React.Component{
           justify="space-between"
         >
                 <div className={classes.notification}>
-                 { !taken && <NotificationsActiveIcon className={classes.notificationIcon} /> }
-                 { taken &&  <NotificationsActiveIcon className={classes.notificationIcon} />}
+                 { (!taken && !cancel)  && <NotificationsActiveIcon className={classes.notificationIcon} /> }
+                 { (taken || cancel) &&  <NotificationsActiveIcon className={classes.notificationIcon} />}
 
                   <Typography
                     className={classes.caption}
                     variant="caption"
                   >
-                   {taken && <div>Dossage taken</div>}{!taken && <div>Dossage not taken</div>}
+                   {(taken && !cancel) && <div>Dossage taken</div>}{(!taken && !cancel) && <div>Dossage not taken</div>}
+                   { cancel && <div>Dossage canceled</div>}
                   </Typography>
                 </div>
 

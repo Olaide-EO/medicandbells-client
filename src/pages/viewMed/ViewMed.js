@@ -38,7 +38,8 @@ class ViewMed extends React.Component{
 							          	 <SingleMed time={singleMedication[val].time} 
 							          	 taken={singleMedication[val].taken}
 							          	 dossage={singleMedication[val].dossage}
-							          	 index={val} />
+							          	 index={val}
+							          	 cancel={singleMedication[val].cancel} />
 							          	) 
 							          	 
 							      )
