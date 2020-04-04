@@ -14,6 +14,9 @@ import {
   LinearProgress
 } from '@material-ui/core';
 
+import { useSelector ,useDispatch } from 'react-redux'
+
+
 const useStyles = makeStyles(theme => ({
   root: {},
   details: {
@@ -37,13 +40,15 @@ const useStyles = makeStyles(theme => ({
 const AccountProfile = props => {
   const { className, ...rest } = props;
 
+  let userCredentials = useSelector(state => state.user.credentials);
+
   const classes = useStyles();
 
   const user = {
-    name: 'Shen Zhi',
-    city: 'Los Angeles',
-    country: 'USA',
-    timezone: 'GTM-7',
+    name: '',
+    city: '',
+    country: '',
+    timezone: '',
     avatar: '/images/avatars/avatar_11.png'
   };
 
@@ -56,24 +61,25 @@ const AccountProfile = props => {
         <div className={classes.details}>
           <div>
             <Typography
+              id="userName"
               gutterBottom
               variant="h4"
             >
-              John Doe
+              {userCredentials.firstName + " " + userCredentials.lastName}
             </Typography>
             <Typography
               className={classes.locationText}
               color="textSecondary"
               variant="body1"
             >
-              {user.city}, {user.country}
+              {userCredentials.city} {userCredentials.city && ","} {userCredentials.country}
             </Typography>
             <Typography
               className={classes.dateText}
               color="textSecondary"
               variant="body1"
             >
-              {moment().format('hh:mm A')} ({user.timezone})
+            Profile created {moment(userCredentials.createdAt).fromNow()}
             </Typography>
           </div>
           <Avatar

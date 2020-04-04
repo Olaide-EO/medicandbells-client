@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
 import { logoutUser } from '../../redux/actions/userActions';
-import { useDispatch } from 'react-redux'
+import { useSelector ,useDispatch } from 'react-redux'
 
 import {
   Card,
@@ -18,24 +18,31 @@ import {
 } from '@material-ui/core';
 
 //love
-const useStyles = makeStyles(() => ({
-  root: {}
+const useStyles = makeStyles((theme) => ({
+  root: {},
+  logOut: {
+    backgroundColor: theme.palette.error.dark,
+    color: '#fff'
+  }
 }));
 
 const AccountDetails = props => {
   const { className, ...rest } = props;
    const dispatch = useDispatch()
+   let userCredentials = useSelector(state => state.user.credentials);
+
 
 
   const classes = useStyles();
 
   const [values, setValues] = useState({
-    firstName: 'Shen',
-    lastName: 'Zhi',
-    email: 'shen.zhi@devias.io',
+    firstName: userCredentials.firstName,
+    lastName: userCredentials.lastName,
+    email: userCredentials.email,
     phone: '',
-    state: 'Alabama',
-    country: 'USA'
+    state: '',
+    country: '',
+  
   });
 
   const handleChange = event => {
@@ -74,7 +81,7 @@ const AccountDetails = props => {
         noValidate
       >
         <CardHeader
-          subheader="The information can be edited"
+          subheader="Add phone number to get notifications on your mobile"
           title="Profile"
         />
         <Divider />
@@ -130,6 +137,7 @@ const AccountDetails = props => {
                 required
                 value={values.email}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -148,7 +156,41 @@ const AccountDetails = props => {
                 variant="outlined"
               />
             </Grid>
-            <Grid
+            
+
+          </Grid>
+        </CardContent>
+        <Divider />
+        <CardActions>
+          <Button
+            color="primary"
+            variant="contained"
+          >
+            Save details
+          </Button>
+
+          <Button
+            className={classes.logOut}
+            variant="contained"
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </CardActions>
+      </form>
+    </Card>
+  );
+};
+
+AccountDetails.propTypes = {
+  className: PropTypes.string
+};
+
+export default AccountDetails;
+
+/*
+
+<Grid
               item
               md={6}
               xs={12}
@@ -192,32 +234,5 @@ const AccountDetails = props => {
                 variant="outlined"
               />
             </Grid>
-          </Grid>
-        </CardContent>
-        <Divider />
-        <CardActions>
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
-          </Button>
 
-          <Button
-            color="seconday"
-            variant="contained"
-            onClick={handleLogout}
-          >
-            Logout
-          </Button>
-        </CardActions>
-      </form>
-    </Card>
-  );
-};
-
-AccountDetails.propTypes = {
-  className: PropTypes.string
-};
-
-export default AccountDetails;
+            */
