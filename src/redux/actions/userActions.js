@@ -3,7 +3,7 @@ import {
         SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNAUTHENTICATED,
          LOADING_USER, MARK_NOTIFICATIONS_READ, SET_USER_ORDERS, LOADING_ORDER, 
          CLEAR_CART, LOADING_PAYMENT, LOADING_MEDICATION, SET_MEDICATION, 
-         TAKE_MEDICATION, CANCEL_MEDICATION  
+         TAKE_MEDICATION, CANCEL_MEDICATION, SET_SINGLE_MEDICATION  
      } from '../types';
 
 
@@ -104,6 +104,8 @@ export const takeMedication = (medData) => (dispatch) => {
                     type: SET_MEDICATION,
                     payload: res.data
                 })
+                dispatch({ type: SET_SINGLE_MEDICATION,
+               payload: medData.medId })
            })
 }
 
@@ -115,6 +117,8 @@ export const cancelMedication = (medData) => (dispatch) => {
                     type: SET_MEDICATION,
                     payload: res.data
                 })
+                dispatch({ type: SET_SINGLE_MEDICATION,
+               payload: medData.medId })
            })
 } 
 
