@@ -28,12 +28,7 @@ export default function Navbar(props) {
           <li>
             <Link to='/signup' onClick={handleClick}>Signup</Link>                                                       
           </li>
-          <li>
-            <Link to='/faq' onClick={handleClick}>Faq</Link>
-          </li>
-          <li>
-            <Link to='/contactus' onClick={handleClick}>Contact Us</Link>
-          </li>
+
         </ul>
     ) : (
        
@@ -76,3 +71,13 @@ export default function Navbar(props) {
     
   );
 }
+
+
+ /*
+          <li>
+            <Link to='/faq' onClick={handleClick}>Faq</Link>
+          </li>
+          <li>
+            <Link to='/contactus' onClick={handleClick}>Contact Us</Link>
+          </li>
+          */

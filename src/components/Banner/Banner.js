@@ -3,8 +3,13 @@ import "./Banner.css";
 import SocialMedia from "../socialMedia/SocialMedia";
 import Button from "../button/Button";
 //import { greeting } from "../../portfolio";
+import { useSelector } from 'react-redux';
+
 
 export default function Banner() {
+
+  let authenticated = useSelector(state => state.user.authenticated);
+
   return (
     <div className="greet-main" id="greeting">
       
@@ -16,8 +21,18 @@ export default function Banner() {
                   <p className="greeting-text-p subTitle">Busy and can't keep up with schedule? We provide instant  notification for your prescription schedule</p>
                   <SocialMedia />
                <div className="button-greeting-div">
-                 <Button text="Login" href="/login" />
-                 <Button text="Signup"  href="/signup" />
+               {
+                !authenticated && <React.Fragment>
+                             <Button text="Login" href="/login" />
+                             <Button text="Signup"  href="/signup" />
+                </React.Fragment>
+              }  
+               {
+                authenticated && <React.Fragment>
+                             <Button text="View History" href="/medications" />
+                             <Button text="Add Medication"  href="/addMed" />
+                </React.Fragment>
+              }  
                </div>
            </div>
         </div>
