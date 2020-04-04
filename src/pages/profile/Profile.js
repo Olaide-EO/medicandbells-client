@@ -6,6 +6,8 @@ import  AccountProfile  from './AccountProfile';
 import  AccountDetails  from './AccountDetails';
 
 
+import './Profile.css'
+
 
 
 
