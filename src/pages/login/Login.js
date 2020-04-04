@@ -105,9 +105,9 @@ handleChange = (event) => {
         const { errors } = this.state;
         return (
           
-        <Container id="loginContainer" component="main" maxWidth="xs">
+        <Container id="loginContainer" className={classes.paper} component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -130,7 +130,7 @@ handleChange = (event) => {
             value={this.state.email} 
             onChange={this.handleChange} 
                          
-            autoFocus
+            
           />
           <TextField
             variant="outlined"
@@ -189,7 +189,7 @@ handleChange = (event) => {
             </Grid>
           </Grid>
         </form>
-      </div>
+      
       
     </Container>
   
