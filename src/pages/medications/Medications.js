@@ -74,16 +74,19 @@ class Medications extends Component {
            credentials: {  createdAt, firstName, lastName,phoneNumber, address, state},
            loading,
            loadingMedication,
-           authenticated,
            medication
+      },
+      auth: {
+        authenticated
       }
+
     } = this.props;
 
 
 
-        const history = !medication ? <div></div> : medication.length == 0 ? <Noimage/> : <MedHistory/>
+        const history =  !authenticated ? <Noimage/>:  !medication  ? <div></div> : medication.length == 0 ? <Noimage/> : <MedHistory/>
 
-        const medicImage = !medication ? "" : medication.length == 0 ? "" : " medicImage" 
+        const medicImage = !authenticated ? "" : !medication ? "" : medication.length == 0 ? "" : " medicImage" 
 
 
 		const display =  (loading || loadingMedication) ? (
@@ -121,12 +124,14 @@ class Medications extends Component {
 
 const mapStateToProps = (state) => ({
     user: state.user,
-    data: state.data
+    data: state.data,
+    auth: state.auth,
 })
 
 Medications.propTypes = {
     
     user: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired
 }
 
