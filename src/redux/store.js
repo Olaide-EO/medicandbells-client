@@ -28,7 +28,7 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 
   export let store =  createStore(persistedReducer, initialState, compose(
 					    applyMiddleware(...middleware),  
-					    //window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()
+					    window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()
 					    ))
 
  export let persistor = persistStore(store)

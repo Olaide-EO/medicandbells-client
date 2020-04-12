@@ -62,17 +62,6 @@ const token = localStorage.FBIdToken;
 
 
 
-if(token){
- const decodedToken = jwtDecode(token);
- if(decodedToken.exp * 1000 < Date.now()){
-   store.dispatch(logoutUser())
-   
- } else {
-   store.dispatch({ type: SET_AUTHENTICATED })
-   axios.defaults.headers.common['Authorization'] = token;
-   store.dispatch(getUserData())
- }
-}
 
 
  
@@ -82,6 +71,20 @@ if(token){
 //<random hash which is unique to user>@users.the-site.tld
 class App extends Component {
       render(){
+
+
+        if(token){
+         const decodedToken = jwtDecode(token);
+         if(decodedToken.exp * 1000 < Date.now()){
+           store.dispatch(logoutUser())
+           
+         } else {
+           store.dispatch({ type: SET_AUTHENTICATED })
+           axios.defaults.headers.common['Authorization'] = token;
+           store.dispatch(getUserData())
+         }
+        }
+
         return (
           <MuiThemeProvider theme={theme}>
           <Provider store={store}>
