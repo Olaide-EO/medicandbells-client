@@ -19,17 +19,21 @@ const reducers = combineReducers({
 })
 
 const persistConfig = {
-  key: 'root',
+  key: 'medicreminder',
   storage,
    blacklist: ['auth']
 }
  
 const persistedReducer = persistReducer(persistConfig, reducers)
 
-  export let store =  createStore(persistedReducer, initialState, compose(
-					    applyMiddleware(...middleware),  
-					    //window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+  export let store =  createStore(persistedReducer, initialState, composeEnhancers(
+					    applyMiddleware(...middleware)
+					    
 					    ))
+
+
 
  export let persistor = persistStore(store)
 
